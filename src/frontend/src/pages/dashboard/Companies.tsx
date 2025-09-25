@@ -1,5 +1,36 @@
 import { Motion } from 'solid-motionone';
 import DashboardLayout from '../../layouts/DashboardLayout';
+import { Pagination } from "@kobalte/core/pagination";
+import { createSignal } from 'solid-js';
+
+const PAGE_SIZE = 10;
+
+const companies = [
+  { id: 1, name: 'Acme Corp', region: 'USA', contact: 'info@acme.com' },
+  { id: 2, name: 'Globex Ltd', region: 'UK', contact: 'contact@globex.co.uk' },
+  { id: 3, name: 'Initech', region: 'Canada', contact: 'hello@initech.ca' },
+  { id: 4, name: 'Umbrella Inc', region: 'Germany', contact: 'contact@umbrella.de' },
+  { id: 5, name: 'Wayne Enterprises', region: 'USA', contact: 'info@wayne.com' },
+  { id: 6, name: 'Stark Industries', region: 'USA', contact: 'contact@stark.com' },
+  { id: 7, name: 'Hooli', region: 'USA', contact: 'info@hooli.com' },
+  { id: 8, name: 'Soylent Corp', region: 'USA', contact: 'hello@soylent.com' },
+  { id: 9, name: 'Massive Dynamic', region: 'USA', contact: 'contact@massivedynamic.com' },
+  { id: 10, name: 'Vandelay Industries', region: 'USA', contact: 'info@vandelay.com' },
+  { id: 11, name: 'Wonka Industries', region: 'UK', contact: 'info@wonka.com' },
+  { id: 12, name: 'Cyberdyne Systems', region: 'USA', contact: 'contact@cyberdyne.com' },
+  { id: 13, name: 'Tyrell Corporation', region: 'USA', contact: 'info@tyrell.com' },
+  { id: 14, name: 'Oscorp', region: 'USA', contact: 'contact@oscorp.com' },
+  { id: 15, name: 'LexCorp', region: 'USA', contact: 'info@lexcorp.com' },
+  { id: 16, name: 'Pied Piper', region: 'USA', contact: 'hello@piedpiper.com' },
+  { id: 17, name: 'Monsters Inc', region: 'USA', contact: 'info@monstersinc.com' },
+  { id: 18, name: 'Gringotts Bank', region: 'UK', contact: 'contact@gringotts.co.uk' },
+  { id: 19, name: 'Oceanic Airlines', region: 'Australia', contact: 'info@oceanic.com' },
+  { id: 20, name: 'Duff Beer', region: 'USA', contact: 'contact@duffbeer.com' },
+];
+
+const [page, setPage] = createSignal(1);
+const pageCount = Math.ceil(companies.length / PAGE_SIZE);
+const pagedCompanies = () => companies.slice((page() - 1) * PAGE_SIZE, page() * PAGE_SIZE);
 
 const CompanyList = () => (
   <DashboardLayout>
@@ -17,99 +48,28 @@ const CompanyList = () => (
             </tr>
           </thead>
           <tbody>
-            {/* Example static rows, replace with dynamic data later */}
-            <tr class="border-t">
-              <td class="px-4 py-2">Acme Corp</td>
-              <td class="px-4 py-2">USA</td>
-              <td class="px-4 py-2">info@acme.com</td>
-              <td class="px-4 py-2">
-                <a href="/dashboard/companies/1" class="text-blue-600 hover:underline mr-2">Details</a>
-                <a href="/dashboard/companies/1/edit" class="text-green-600 hover:underline">Edit</a>
-              </td>
-            </tr>
-            <tr class="border-t">
-              <td class="px-4 py-2">Globex Ltd</td>
-              <td class="px-4 py-2">UK</td>
-              <td class="px-4 py-2">contact@globex.co.uk</td>
-              <td class="px-4 py-2">
-                <a href="/dashboard/companies/2" class="text-blue-600 hover:underline mr-2">Details</a>
-                <a href="/dashboard/companies/2/edit" class="text-green-600 hover:underline">Edit</a>
-              </td>
-            </tr>
-            <tr class="border-t">
-              <td class="px-4 py-2">Initech</td>
-              <td class="px-4 py-2">Canada</td>
-              <td class="px-4 py-2">hello@initech.ca</td>
-              <td class="px-4 py-2">
-                <a href="/dashboard/companies/3" class="text-blue-600 hover:underline mr-2">Details</a>
-                <a href="/dashboard/companies/3/edit" class="text-green-600 hover:underline">Edit</a>
-              </td>
-            </tr>
-            <tr class="border-t">
-              <td class="px-4 py-2">Umbrella Inc</td>
-              <td class="px-4 py-2">Germany</td>
-              <td class="px-4 py-2">contact@umbrella.de</td>
-              <td class="px-4 py-2">
-                <a href="/dashboard/companies/4" class="text-blue-600 hover:underline mr-2">Details</a>
-                <a href="/dashboard/companies/4/edit" class="text-green-600 hover:underline">Edit</a>
-              </td>
-            </tr>
-            <tr class="border-t">
-              <td class="px-4 py-2">Wayne Enterprises</td>
-              <td class="px-4 py-2">USA</td>
-              <td class="px-4 py-2">info@wayne.com</td>
-              <td class="px-4 py-2">
-                <a href="/dashboard/companies/5" class="text-blue-600 hover:underline mr-2">Details</a>
-                <a href="/dashboard/companies/5/edit" class="text-green-600 hover:underline">Edit</a>
-              </td>
-            </tr>
-            <tr class="border-t">
-              <td class="px-4 py-2">Stark Industries</td>
-              <td class="px-4 py-2">USA</td>
-              <td class="px-4 py-2">contact@stark.com</td>
-              <td class="px-4 py-2">
-                <a href="/dashboard/companies/6" class="text-blue-600 hover:underline mr-2">Details</a>
-                <a href="/dashboard/companies/6/edit" class="text-green-600 hover:underline">Edit</a>
-              </td>
-            </tr>
-            <tr class="border-t">
-              <td class="px-4 py-2">Hooli</td>
-              <td class="px-4 py-2">USA</td>
-              <td class="px-4 py-2">info@hooli.com</td>
-              <td class="px-4 py-2">
-                <a href="/dashboard/companies/7" class="text-blue-600 hover:underline mr-2">Details</a>
-                <a href="/dashboard/companies/7/edit" class="text-green-600 hover:underline">Edit</a>
-              </td>
-            </tr>
-            <tr class="border-t">
-              <td class="px-4 py-2">Soylent Corp</td>
-              <td class="px-4 py-2">USA</td>
-              <td class="px-4 py-2">hello@soylent.com</td>
-              <td class="px-4 py-2">
-                <a href="/dashboard/companies/8" class="text-blue-600 hover:underline mr-2">Details</a>
-                <a href="/dashboard/companies/8/edit" class="text-green-600 hover:underline">Edit</a>
-              </td>
-            </tr>
-            <tr class="border-t">
-              <td class="px-4 py-2">Massive Dynamic</td>
-              <td class="px-4 py-2">USA</td>
-              <td class="px-4 py-2">contact@massivedynamic.com</td>
-              <td class="px-4 py-2">
-                <a href="/dashboard/companies/9" class="text-blue-600 hover:underline mr-2">Details</a>
-                <a href="/dashboard/companies/9/edit" class="text-green-600 hover:underline">Edit</a>
-              </td>
-            </tr>
-            <tr class="border-t">
-              <td class="px-4 py-2">Vandelay Industries</td>
-              <td class="px-4 py-2">USA</td>
-              <td class="px-4 py-2">info@vandelay.com</td>
-              <td class="px-4 py-2">
-                <a href="/dashboard/companies/10" class="text-blue-600 hover:underline mr-2">Details</a>
-                <a href="/dashboard/companies/10/edit" class="text-green-600 hover:underline">Edit</a>
-              </td>
-            </tr>
+            {pagedCompanies().map(company => (
+              <tr class="border-t" key={company.id}>
+                <td class="px-4 py-2">{company.name}</td>
+                <td class="px-4 py-2">{company.region}</td>
+                <td class="px-4 py-2">{company.contact}</td>
+                <td class="px-4 py-2">
+                  <a href={`/dashboard/companies/${company.id}`} class="text-blue-600 hover:underline mr-2">Details</a>
+                  <a href={`/dashboard/companies/${company.id}/edit`} class="text-green-600 hover:underline">Edit</a>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
+      </div>
+      <div class="flex justify-center mt-6">
+        <Pagination
+          count={pageCount}
+          page={page()}
+          onChange={setPage}
+          showFirstButton
+          showLastButton
+        />
       </div>
     </Motion.div>
   </DashboardLayout>
