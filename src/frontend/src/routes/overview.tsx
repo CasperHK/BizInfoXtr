@@ -1,3 +1,3 @@
-import Overview from '../pages/dashboard/overview';
+import Overview from '../pages/dashboard/Overview';
 
 export default Overview;
