@@ -1,4 +1,4 @@
-import { useLocation } from 'solid-app-router';
+import { useLocation } from '@solidjs/router';
 
 const SideBar = () => {
   const location = useLocation();
