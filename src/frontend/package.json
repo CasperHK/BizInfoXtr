@@ -13,7 +13,8 @@
     "@typescript-eslint/parser": "^7.6.0",
     "eslint": "^8.56.0",
     "eslint-plugin-solid": "^0.14.3",
-    "typescript": "^5.6.2"
+    "typescript": "^5.6.2",
+    "vite": "^7.1.7"
   },
   "dependencies": {
     "@ark-ui/react": "^5.25.0",

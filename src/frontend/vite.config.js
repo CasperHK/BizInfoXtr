@@ -4,7 +4,7 @@ import path from 'path';
 export default defineConfig({
   resolve: {
     alias: {
-      '@dialogs': path.resolve(__dirname, '../dialogs'),
+      '@dialogs': path.resolve(__dirname, 'src/components/dialogs'),
     },
   },
 });

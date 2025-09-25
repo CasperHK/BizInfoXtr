@@ -1,6 +1,6 @@
 import { Menu, MenuTrigger, MenuContent, MenuItem } from '@ark-ui/solid/menu';
 import { createSignal } from 'solid-js';
-import ConfirmLogoutDialog from '@dialogs/ConfirmLogoutDialog';
+import ConfirmLogoutDialog from '../dialogs/ConfirmLogoutDialog';
 
 const TopNav = () => {
   const [open, setOpen] = createSignal(false);
