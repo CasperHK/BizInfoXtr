@@ -1,11 +1,19 @@
 import { Menu, MenuTrigger, MenuContent, MenuItem } from '@ark-ui/solid/menu';
 import { createSignal } from 'solid-js';
+import ConfirmLogoutDialog from '@dialogs/ConfirmLogoutDialog';
 
 const TopNav = () => {
   const [open, setOpen] = createSignal(false);
+  const [showLogout, setShowLogout] = createSignal(false);
 
   const handleMenu = () => setOpen(!open());
   const handleClose = () => setOpen(false);
+  const handleLogoutClick = () => setShowLogout(true);
+  const handleLogoutConfirm = () => {
+    setShowLogout(false);
+    // Add your logout logic here
+  };
+  const handleLogoutCancel = () => setShowLogout(false);
 
   return (
     <nav class="w-full bg-white shadow flex items-center justify-between px-8 py-4">
@@ -25,9 +33,10 @@ const TopNav = () => {
             <a href="/dashboard/profile" class="block w-full text-left px-4 py-2 hover:bg-gray-100">Profile</a>
             <a href="/dashboard/settings" class="block w-full text-left px-4 py-2 hover:bg-gray-100">Settings</a>
             <div class="border-t border-gray-200 my-2"></div>
-            <button class="block w-full text-left px-4 py-2 text-red-600 hover:bg-gray-100">Logout</button>
+            <button class="block w-full text-left px-4 py-2 text-red-600 hover:bg-gray-100" onClick={handleLogoutClick}>Logout</button>
           </div>
         )}
+        <ConfirmLogoutDialog open={showLogout()} onConfirm={handleLogoutConfirm} onCancel={handleLogoutCancel} />
       </div>
     </nav>
   );
