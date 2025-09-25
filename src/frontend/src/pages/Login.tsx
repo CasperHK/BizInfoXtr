@@ -1,24 +1,26 @@
 import { createSignal } from 'solid-js';
-import { useNavigate } from 'solid-start';
+import BasicLayout from '../components/BasicLayout';
 
 const Login = () => {
   const [username, setUsername] = createSignal('');
   const [password, setPassword] = createSignal('');
   const [error, setError] = createSignal('');
-  const navigate = useNavigate();
+  const [success, setSuccess] = createSignal(false);
 
-  const handleSubmit = async (e: Event) => {
+  const handleSubmit = (e: Event) => {
     e.preventDefault();
     // TODO: Replace with real authentication logic
     if (username() === 'admin' && password() === 'admin') {
-      navigate('/dashboard');
+      setSuccess(true);
+      setError('');
     } else {
       setError('Invalid username or password');
+      setSuccess(false);
     }
   };
 
   return (
-    <main class="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-blue-100 to-blue-300">
+    <BasicLayout>
       <div class="bg-white rounded-xl shadow-lg p-8 max-w-md w-full text-center">
         <h2 class="text-2xl font-bold mb-6 text-blue-700">Login to BizInfoXtr</h2>
         <form onSubmit={handleSubmit} class="flex flex-col gap-4">
@@ -39,10 +41,11 @@ const Login = () => {
             required
           />
           {error() && <div class="text-red-600 text-sm">{error()}</div>}
+          {success() && <div class="text-green-600 text-sm">Login successful!</div>}
           <button type="submit" class="px-6 py-2 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition">Login</button>
         </form>
       </div>
-    </main>
+    </BasicLayout>
   );
 };
 
