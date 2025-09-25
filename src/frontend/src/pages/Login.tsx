@@ -1,5 +1,5 @@
 import { createSignal } from 'solid-js';
-import BasicLayout from '../components/BasicLayout';
+import BasicLayout from '../layouts/BasicLayout';
 
 const Login = () => {
   const [username, setUsername] = createSignal('');

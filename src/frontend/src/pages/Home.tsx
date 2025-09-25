@@ -1,5 +1,5 @@
 import { Component } from 'solid-js';
-import BasicLayout from '../components/BasicLayout';
+import BasicLayout from '../layouts/BasicLayout';
 
 const Home: Component = () => {
   return (

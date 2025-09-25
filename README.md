@@ -16,4 +16,4 @@ This project develops a Business Information Extractor designed to gather busine
 
 
 ## Project Type
-[Laravel](https://laravel.com/) + [Vue.js](https://vuejs.org/)
+[Laravel](https://laravel.com/) + [Vue.js](https://vuejs.org/) + [SolidStart](https://start.solidjs.com/) + [Ark UI](https://ark-ui.com/)
