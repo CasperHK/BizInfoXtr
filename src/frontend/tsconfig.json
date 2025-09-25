@@ -9,10 +9,13 @@
     "jsxImportSource": "solid-js",
     "jsx": "preserve",
     "types": ["vite/client", "@solidjs/start/env"],
-    "baseUrl": "./",
+    "rootDir": "src",
+    "baseUrl": ".",
     "paths": {
       "~/*": ["./src/*"],
-      "@dialogs/*": ["/src/components/dialogs/*"]
+      "@dialogs/*": ["./src/components/dialogs/*"],
+      "@components/*": ["./src/components/*"],
+      "@layouts/*": ["./src/layouts/*"]
     }
   }
 }
