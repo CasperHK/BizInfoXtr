@@ -11,7 +11,7 @@ export default function App() {
     <Router
       root={(props) => (
         <MetaProvider>
-          <Title>Create JD APP</Title>
+          <Title>BizInfoXtr</Title>
           <Suspense>
             <SessionProvider>{props.children} </SessionProvider>
           </Suspense>
